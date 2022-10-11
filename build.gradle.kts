@@ -12,9 +12,6 @@ repositories {
 
 dependencies {
     // Build context
-    compileOnly("com.graphql-java-kickstart:graphql-spring-boot-starter:14.0.0")
-    compileOnly("com.graphql-java-kickstart:graphiql-spring-boot-starter:11.1.0")
-    compileOnly("com.graphql-java:graphql-java-extended-scalars:19.0")
     compileOnly("javax.validation:validation-api:2.0.1.Final")
 
     // Test context
@@ -25,8 +22,8 @@ dependencies {
 tasks.named<GraphQLCodegenGradleTask>("graphqlCodegen") {
     graphqlSchemaPaths = listOf("$projectDir/src/main/resources/schema.graphqls")
     outputDir = File("$buildDir/generated")
-    apiPackageName = "com.cunningbird.templates.contractfirstgraphql.api"
-    modelPackageName = "com.cunningbird.templates.contractfirstgraphql.model"
+    apiPackageName = "com.cunningbird.contractfirst.graphqls.contract.api"
+    modelPackageName = "com.cunningbird.contractfirst.graphqls.contract.model"
     generateApis = true
 }
 
@@ -50,7 +47,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/cunningbird-lab/contract-frist-graphql")
+            url = uri("https://maven.pkg.github.com/cunningbird/contract-first-graphql")
             credentials {
                 username = System.getProperty("publishRegistryUsername")
                 password = System.getProperty("publishRegistryPassword")
@@ -59,8 +56,8 @@ publishing {
     }
     publications {
         create<MavenPublication>("maven") {
-            groupId = "com.cunningbird.templates"
-            artifactId = "contract-first-graphql"
+            groupId = "com.cunningbird.contractfirst.graphqls"
+            artifactId = "contract"
             version = "1.0.0"
             from(components["java"])
         }

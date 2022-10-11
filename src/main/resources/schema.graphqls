@@ -1,46 +1,20 @@
-schema {
-    query: Query
-    mutation: Mutation
-}
-
 type Query {
-    products: [Product]
-
-    productById(id: ID!): Product
-
-    productsByIds(ids: [ID!]!): [Product]
+    pets: [Pet]
+    pet(id: Int!): Pet
 }
 
 type Mutation {
-    create(productInput: ProductInput!): Product
+    addPet(pet: InputPet!): Pet
 }
 
-type Product {
+type Pet {
     id: ID!
-    title: String!
-    description: String
-    price: BigDecimal!
-    sku: String!
-    stockStatus: StockStatus
-    addedDateTime: DateTime!
+    name: String!
+    tag: String!
 }
 
-input ProductInput {
-    title: String!
-    description: String
-    price: BigDecimal!
-    sku: String!
-    stockStatus: StockStatus
+input InputPet {
+    id: ID!
+    name: String!
+    tag: String
 }
-
-enum StockStatus {
-    IN_STOCK
-    SPECIAL_ORDER
-    BACK_ORDERED
-    COMING_SOON
-    SOLD_OUT
-    DISCONTINUED
-}
-
-scalar DateTime
-scalar BigDecimal
