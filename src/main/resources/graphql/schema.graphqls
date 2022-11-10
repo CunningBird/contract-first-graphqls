@@ -1,6 +1,6 @@
 type Query {
     pets: [Pet]
-    pet(id: Int!): Pet
+    pet(id: ID!): Pet
 }
 
 type Mutation {
